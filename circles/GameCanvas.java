@@ -13,11 +13,11 @@ public class GameCanvas extends JPanel {
         this.gameWindow = gameWindow;
     }
 
-    private void backGround() {
+    private void backGround(float currentTime) {
         Color color = new Color(
-                (int)(Math.random() * 255),
-                (int)(Math.random() * 255),
-                (int)(Math.random() * 255)
+                (int)(currentTime * Math.random() % 255f),
+                (int)(currentTime * Math.random() % 255f),
+                (int)(currentTime * Math.random() % 255f)
         );
         setBackground(color);
     }
@@ -37,7 +37,7 @@ public class GameCanvas extends JPanel {
         }
 
         gameWindow.onDrawPanel(this, g, delta);
-        backGround();
+        backGround(currentTime);
         repaint();
     }
 

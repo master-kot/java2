@@ -2,6 +2,8 @@ package circles;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class MainCircles extends JFrame {
         /*
@@ -16,7 +18,8 @@ public class MainCircles extends JFrame {
     private static final int POS_Y = 200;
     private static final int WINDOW_WIDTH = 800;
     private static final int WINDOW_HEIGHT = 600;
-    Sprite[] sprites = new Sprite[10];
+    private int spritesLength = 10;
+    Sprite[] sprites = new Sprite[spritesLength];
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -35,6 +38,35 @@ public class MainCircles extends JFrame {
         add(gameCanvas);
         initGame();
         setVisible(true);
+        addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                if(mouseEvent.getButton() == MouseEvent.BUTTON1) {
+                    //Здесь должна быть логика изменения количества кружков
+                    //spritesLength++;
+                }
+                if(mouseEvent.getButton() == MouseEvent.BUTTON3) {
+                    //Здесь должна быть логика изменения количества кружков
+                    //spritesLength++;
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+            }
+        });
     }
 
     private void initGame() {
