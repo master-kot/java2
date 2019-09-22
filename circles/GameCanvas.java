@@ -8,8 +8,18 @@ public class GameCanvas extends JPanel {
     private MainCircles gameWindow;
     private long lastFrameTime;
 
+
     GameCanvas(MainCircles gameWindow) {
         this.gameWindow = gameWindow;
+    }
+
+    private void backGround() {
+        Color color = new Color(
+                (int)(Math.random() * 255),
+                (int)(Math.random() * 255),
+                (int)(Math.random() * 255)
+        );
+        setBackground(color);
     }
 
     @Override
@@ -27,6 +37,7 @@ public class GameCanvas extends JPanel {
         }
 
         gameWindow.onDrawPanel(this, g, delta);
+        backGround();
         repaint();
     }
 
