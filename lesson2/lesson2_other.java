@@ -1,3 +1,5 @@
+package lesson2;
+
 public class lesson2_other {
 
     private static String[][] stringToArray(String inputString) throws ArrayIndexOutOfBoundsException {
