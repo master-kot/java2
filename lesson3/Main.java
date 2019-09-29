@@ -3,6 +3,8 @@ package lesson3;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+//Я много думал как сделать правильнее, в итоге решил загонять внутрь ArrayList<Person> каждый элемент HashMap,
+//в зависимости есть ли уже такой Key в HashMap, мы получаем Value в виде ArrayList соответствующего размера
 class PhoneBook {
     private HashMap<String, ArrayList<Person>> phonebook = new HashMap<>();
 
@@ -71,6 +73,8 @@ public class Main {
 
         myBook.getPhone("Ivanov");
         myBook.getEmail("Ivanov");
+        myBook.getPhone("Petrov");
+        myBook.getEmail("Petrov");
         myBook.getPhone("Bobrov");
         myBook.getEmail("Bobrov");
     }
