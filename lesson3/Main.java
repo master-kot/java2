@@ -3,20 +3,43 @@ package lesson3;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/*
 class PhoneBook {
-    private HashMap<String, lesson3.simple.Person> phonebook = new HashMap<>();
-    private class dataPerson {
+    private HashMap<String, DataPerson> phonebook = new HashMap<>();
+
+    private class DataPerson {
+        private ArrayList<Integer> phone = new ArrayList<>();
+        private String email;
+
+        DataPerson (int phone, String email) {
+            this.phone.add(phone);
+            this.email = email;
+        }
+
+        void setPhone(int phone) {
+            this.phone.add(phone);
+        }
+
+        void setEmail(String email) {
+            this.email = email;
+        }
+
+        ArrayList<Integer> getPhone() {
+            return phone;
+        }
+
+        String getEmail() {
+            return email;
+        }
 
     }
-*/
+
 /*    void setPhoneBook (Person[] person) {
         for (Person value : person) {
             phonebook.put(value.getName(), value);
         }
     }*/
-/*
-    void setPhoneBook (lesson3.simple.Person[] person) {
+
+/*    void setPhoneBook (Person[] person) {
         for (lesson3.simple.Person value : person) {
             if (phonebook.containsKey(value.getName()) ) {
                 int j = mapArrayParts.get(s);
@@ -27,15 +50,17 @@ class PhoneBook {
 
         }
     }
+*/
 
 
 
-    void setPhoneBook (lesson3.simple.Person person) {
+    void setPhoneBook (Person person) {
         if ( phonebook.containsKey(person.getName()) ) {
-
-            phonebook.replace(person.getName(), changedPerson;)
+            DataPerson data = phonebook.get(person.getName());
+            data.setPhone(person.getPhone());
+            phonebook.put(person.getName(), data);
         } else {
-            phonebook.put(person.getName(), personData);
+            phonebook.put(person.getName(), new DataPerson(person.getPhone(), person.getEmail()));
         }
     }
 
@@ -58,21 +83,17 @@ class PhoneBook {
 
 class Person {
     private String name;
-    private ArrayList<Integer> phone = new ArrayList<>();;
+    private int phone;
     private String email;
 
     Person (String name, int phone, String email){
         this.name = name;
-        this.phone.add(phone);
+        this.phone = phone;
         this.email = email;
     }
 
-    ArrayList<Integer> getPhone() {
+    int getPhone() {
         return phone;
-    }
-
-    void addPhone(int phone) {
-        this.phone.add(phone);
     }
 
     String getEmail() {
@@ -82,24 +103,26 @@ class Person {
     String getName() {
         return name;
     }
-}*/
+}
 
 public class Main {
     public static void main(String[] args) {
-/*        lesson3.simple.Person[] person = new lesson3.simple.Person[5];
-        person[0] = new lesson3.simple.Person("Ivanov", 111111, "111111@ya.ru");
-        person[1] = new lesson3.simple.Person("Petrov", 222222, "222222@ya.ru");
-        person[2] = new lesson3.simple.Person("Sidorov", 333333, "333333@ya.ru");
-        person[3] = new lesson3.simple.Person("Kozlov", 444444, "444444@ya.ru");
-        person[4] = new lesson3.simple.Person("Zaytsev", 555555, "555555@ya.ru");
-        lesson3.simple.Person p5 = new lesson3.simple.Person("Ivanov", 666666, "666666@ya.ru");
+        Person[] person = new Person[5];
+        person[0] = new Person("Ivanov", 111111, "111111@ya.ru");
+        person[1] = new Person("Petrov", 222222, "222222@ya.ru");
+        person[2] = new Person("Sidorov", 333333, "333333@ya.ru");
+        person[3] = new Person("Kozlov", 444444, "444444@ya.ru");
+        person[4] = new Person("Zaytsev", 555555, "555555@ya.ru");
+        Person p5 = new Person("Ivanov", 666666, "666666@ya.ru");
+        Person p6 = new Person("Ivanov", 777777, "666666@ya.ru");
 
-        lesson3.simple.PhoneBook myBook = new lesson3.simple.PhoneBook();
-        myBook.setPhoneBook(person);
+        PhoneBook myBook = new PhoneBook();
+//        myBook.setPhoneBook(person);
         myBook.setPhoneBook(p5);
+        myBook.setPhoneBook(p6);
         myBook.getPhone("Ivanov");
         myBook.getEmail("Ivanov");
         myBook.getPhone("Bobrov");
         myBook.getEmail("Bobrov");
-*/    }
+    }
 }
