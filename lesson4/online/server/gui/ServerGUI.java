@@ -1,6 +1,6 @@
-package online.server.gui;
+package lesson4.online.server.gui;
 
-import online.server.core.ChatServer;
+import lesson4.online.server.core.ChatServer;
 
 import javax.swing.*;
 import java.awt.*;

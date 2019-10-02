@@ -1,4 +1,6 @@
-package online.client;
+package lesson4.online.client;
+//It's sad to say, but I couldn't find how to open, close and write information to file
+//Java 1 lessons don't contain any information about these operations
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,6 +53,11 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         userList.setPreferredSize(new Dimension(100, 0));
 
         cbAlwaysOnTop.addActionListener(this);
+        //добавлены слушатели на поле и кнопки
+        tfMessage.addActionListener(this);
+        btnSend.addActionListener(this);
+        btnLogin.addActionListener(this);
+        btnDisconnect.addActionListener(this);
 
         panelTop.add(tfIPAddress);
         panelTop.add(tfPort);
@@ -75,6 +82,17 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         Object src = e.getSource();
         if (src == cbAlwaysOnTop) {
             setAlwaysOnTop(cbAlwaysOnTop.isSelected());
+        //Добавлен обработчик строк копирующий текст и удаляющий его
+        } else if (src == tfMessage || src == btnSend) {
+            log.append(tfMessage.getText() + "\n");
+            //writeToLogFile(tfMessage.getText()); - writing text to file
+            tfMessage.setText("");
+        } else if (src == btnLogin) {
+            //login(); - logging to server
+            //openLogFile(); - opening log file
+        } else if (src == btnDisconnect) {
+            //disconnect();
+            //closeLogFile(); - closing log file
         } else {
             throw new RuntimeException("Unknown source: " + src);
         }
