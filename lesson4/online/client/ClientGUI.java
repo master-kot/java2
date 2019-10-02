@@ -1,11 +1,11 @@
 package lesson4.online.client;
-//It's sad to say, but I couldn't find how to open, close and write information to file
-//Java 1 lessons don't contain any information about these operations
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler {
 
@@ -28,16 +28,23 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
 
     private final JList<String> userList = new JList<>();
 
+    //open file and stream
+    FileWriter logFile = new FileWriter( "LogFile.txt" );
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new ClientGUI();
+                try {
+                    new ClientGUI();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
 
-    private ClientGUI() {
+    private ClientGUI() throws IOException {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         Thread.setDefaultUncaughtExceptionHandler(this);
         setLocationRelativeTo(null);
@@ -53,6 +60,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         userList.setPreferredSize(new Dimension(100, 0));
 
         cbAlwaysOnTop.addActionListener(this);
+
         //добавлены слушатели на поле и кнопки
         tfMessage.addActionListener(this);
         btnSend.addActionListener(this);
@@ -82,17 +90,26 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         Object src = e.getSource();
         if (src == cbAlwaysOnTop) {
             setAlwaysOnTop(cbAlwaysOnTop.isSelected());
-        //Добавлен обработчик строк копирующий текст и удаляющий его
+            //Добавлен обработчик строк копирующий текст и удаляющий его
         } else if (src == tfMessage || src == btnSend) {
             log.append(tfMessage.getText() + "\n");
-            //writeToLogFile(tfMessage.getText()); - writing text to file
+            try {
+                //writing text to file
+                logFile.write(tfMessage.getText() + "\n");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             tfMessage.setText("");
         } else if (src == btnLogin) {
-            //login(); - logging to server
-            //openLogFile(); - opening log file
+            //login();
         } else if (src == btnDisconnect) {
             //disconnect();
-            //closeLogFile(); - closing log file
+            //close file
+            try {
+                logFile.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         } else {
             throw new RuntimeException("Unknown source: " + src);
         }
