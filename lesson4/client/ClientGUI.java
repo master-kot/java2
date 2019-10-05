@@ -1,4 +1,4 @@
-package lesson4.online.client;
+package lesson4.client;
 
 import javax.swing.*;
 import java.awt.*;

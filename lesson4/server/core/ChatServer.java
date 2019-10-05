@@ -1,4 +1,4 @@
-package lesson4.online.server.core;
+package lesson4.server.core;
 
 public class ChatServer {
     public void start(int port) {

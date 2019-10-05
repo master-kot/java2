@@ -1,4 +1,4 @@
-package lesson4.online.server.gui;
+package lesson4.server.gui;
 
 import lesson4.online.server.core.ChatServer;
 
