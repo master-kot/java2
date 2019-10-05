@@ -1,6 +1,6 @@
 package lesson4.server.gui;
 
-import lesson4.online.server.core.ChatServer;
+import lesson4.server.core.ChatServer;
 
 import javax.swing.*;
 import java.awt.*;

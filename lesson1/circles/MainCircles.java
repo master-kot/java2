@@ -1,4 +1,4 @@
-package circles;
+package lesson1.circles;
 
 import javax.swing.*;
 import java.awt.*;
