@@ -33,9 +33,20 @@ public class ArrayCounter {
         System.arraycopy(initialArray, 0, firstHalfOfArray, 0, half);
         System.arraycopy(initialArray, half, secondHalfOfArray, 0, half);
 
+        //Вызов потока первым способом
         FirstThread firstThread = new FirstThread();
-        SecondThread secondThread = new SecondThread();
         firstThread.start();
+        Runnable second = new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < secondHalfOfArray.length; i++) {
+                    secondHalfOfArray[i] = (float) (secondHalfOfArray[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+                }
+            }
+        };
+        //Вызов потока вторым способом
+        //Так лучше?
+        Thread secondThread = new Thread(second);
         secondThread.start();
         try {
             firstThread.join();
@@ -61,14 +72,6 @@ public class ArrayCounter {
         public void run() {
             for (int i = 0; i < firstHalfOfArray.length; i++) {
                 firstHalfOfArray[i] = (float) (firstHalfOfArray[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
-            }
-        }
-    }
-
-    private static class SecondThread extends Thread {
-        public void run() {
-            for (int i = 0; i < secondHalfOfArray.length; i++) {
-                secondHalfOfArray[i] = (float) (secondHalfOfArray[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
             }
         }
     }
