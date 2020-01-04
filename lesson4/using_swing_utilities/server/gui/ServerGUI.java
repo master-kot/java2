@@ -1,6 +1,6 @@
-package lesson4.using_swing_utilities.online.server.gui;
+package lesson4.using_swing_utilities.server.gui;
 
-import lesson4.using_swing_utilities.online.server.core.ChatServer;
+import lesson4.using_swing_utilities.server.core.ChatServer;
 
 import javax.swing.*;
 import java.awt.*;

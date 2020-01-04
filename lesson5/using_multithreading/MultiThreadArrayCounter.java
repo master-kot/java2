@@ -2,7 +2,7 @@ package lesson5.using_multithreading;
 
 import java.util.Arrays;
 
-public class MultyThreadArrayCounter {
+public class MultiThreadArrayCounter {
     /**
      * 1. Написать два метода, которые делают следующее:
      * 1) Создают одномерный длинный массив, например:
@@ -14,9 +14,14 @@ public class MultyThreadArrayCounter {
      * 6) Выводится время работы: System.out.println(System.currentTimeMillis() - a);
      *
      * Отличие первого метода от второго: Первый просто бежит по массиву и вычисляет значения.
-     * Второй разбивает массив на два массива, в двух потоках высчитывает новые значения и потом склеивает эти массивы обратно в один.
+     * Второй разбивает массив на два массива, в двух потоках высчитывает новые значения и потом склеивает массивы обратно в один.
      * Для второго метода замеряете время разбивки массива на 2, просчета каждого из двух массивов и склейки.
      */
+
+    public static void main(String[] args) {
+        System.out.println(MultiThreadArrayCounter.firstCountMethod());
+        System.out.println(MultiThreadArrayCounter.secondCountMethod());
+    }
 
     private static int SIZE = 10000000;
     private static int HALF = SIZE / 2;
@@ -64,11 +69,6 @@ public class MultyThreadArrayCounter {
         long lastTime = System.currentTimeMillis() - startTime;
 
         for (float v : initialArray) { result += v; }
-        return "Time of twice thread operation is: " + lastTime + ", result of operation is: " + result;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(MultyThreadArrayCounter.firstCountMethod());
-        System.out.println(MultyThreadArrayCounter.secondCountMethod());
+        return "Time of double threads operation is: " + lastTime + ", result of operation is: " + result;
     }
 }

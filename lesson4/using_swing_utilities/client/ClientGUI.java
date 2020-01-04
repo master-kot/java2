@@ -1,4 +1,4 @@
-package lesson4.using_swing_utilities.online.client;
+package lesson4.using_swing_utilities.client;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,7 +42,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         Thread.setDefaultUncaughtExceptionHandler(this);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setSize(WIDTH, HEIGHT);
+         setSize(WIDTH, HEIGHT);
         setTitle("Chat Client");
 
         log.setEditable(false);
@@ -76,6 +76,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
 
     @Override
     public void uncaughtException(Thread t, Throwable e) {
+        e.printStackTrace();//
         showException(t, e);
         System.exit(1);
     }
@@ -135,5 +136,6 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
                 ste[0]
         );
         JOptionPane.showMessageDialog(null, msg, "Exception", JOptionPane.ERROR_MESSAGE);
+        putLog(msg);
     }
 }

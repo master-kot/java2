@@ -1,4 +1,4 @@
-package lesson4.using_swing_utilities.online.server.core;
+package lesson4.using_swing_utilities.server.core;
 
 public class ChatServer {
     public void start(int port) {
