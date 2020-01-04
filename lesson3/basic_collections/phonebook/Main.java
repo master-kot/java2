@@ -1,21 +1,28 @@
 package lesson3.basic_collections.phonebook;
 
 public class Main {
-    public static void main(String[] args) {
-        Person[] person = new Person[5];
-        person[0] = new Person("Ivanov", 111111, "111111@ya.ru");
-        person[1] = new Person("Petrov", 222222, "222222@ya.ru");
-        person[2] = new Person("Sidorov", 333333, "333333@ya.ru");
-        person[3] = new Person("Kozlov", 444444, "444444@ya.ru");
-        person[4] = new Person("Zaytsev", 555555, "555555@ya.ru");
-        Person p5 = new Person("Ivanov", 666666, "666666@ya.ru");
+    /**
+     *  Написать простой класс PhoneBook(внутри использовать HashMap):
+     *   - В качестве ключа использовать фамилию
+     *   - В каждой записи всего два поля: phone, e-mail
+     *   - Отдельный метод для поиска номера телефона по фамилии (ввели фамилию, получили ArrayList телефонов),
+     *   и отдельный метод для поиска e-mail по фамилии.
+     *   Следует учесть, что под одной фамилией может быть несколько записей.
+     *   Итого должно получиться 3 класса Main, PhoneBook, Person.
+     */
 
+    public static void main(String[] args) {
         PhoneBook myBook = new PhoneBook();
-        myBook.setPhoneBook(person);
-        myBook.setPhoneBook(p5);
-        myBook.getPhone("Ivanov");
-        myBook.getEmail("Ivanov");
-        myBook.getPhone("Bobrov");
-        myBook.getEmail("Bobrov");
+        myBook.setPerson("Ivanov", new Person( "111111", "111111@ya.ru"));
+        myBook.setPerson("Petrov", new Person("222222", "222222@ya.ru"));
+        myBook.setPerson("Sidorov", new Person( "333333", "333333@ya.ru"));
+        myBook.setPerson("Kozlov", new Person( "444444", "444444@ya.ru"));
+        myBook.setPerson("Zaytsev", new Person( "555555", "555555@ya.ru"));
+        myBook.setPerson("Ivanov", new Person( "666666", "666666@ya.ru"));
+
+        System.out.println(myBook.getPersonPhone("Ivanov"));
+        System.out.println(myBook.getPersonEmail("Ivanov"));
+        System.out.println(myBook.getPersonPhone("Bobrov"));
+        System.out.println(myBook.getPersonEmail("Bobrov"));
     }
 }

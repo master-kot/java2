@@ -6,6 +6,12 @@ import java.util.HashSet;
 
 public class MethodsForArrays {
 
+    //TODO
+    /**
+     * Создать массив с набором слов (20-30 слов, должны встречаться повторяющиеся):
+     * Найти список слов, из которых состоит текст (дубликаты не считать);
+     * Посчитать сколько раз встречается каждое слово (использовать HashMap);
+     */
     private static void listFromArray(String[] inputString) {
 //Это позволяет нам получить запрашиваемый список неповторяющихся членов массива
 //Не использую LinkedHashSet потому что в условиях не стояло упорядочить список
@@ -14,6 +20,10 @@ public class MethodsForArrays {
         System.out.println("The list of array's part: " + listArrayParts);
     }
 
+    //TODO
+    /**
+     *
+     */
     private static void countArrayParts (String[] inputString) {
 //почитал какие методы нам могут помочь выполнить задание и решил использовать встроенные
         HashMap<String, Integer> mapArrayParts = new HashMap<>();
@@ -27,6 +37,7 @@ public class MethodsForArrays {
         }
         System.out.println("The list of array's part and number of their presence: " + mapArrayParts);
     }
+
 
     public static void main(String[] args) {
         String[] someArray = {"first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth", "first", "second", "third", "fourth", "fifth", "sixth", "first", "second", "third", "fourth", "first", "second"};

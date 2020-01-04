@@ -1,25 +1,22 @@
 package lesson3.basic_collections.phonebook;
 
 public class Person {
-    final private String name;
-    final private int phone;
+    /**
+     *  каждой записи всего два поля: phone, e-mail
+     */
+    final private String phone;
     final private String email;
 
-    Person (String name, int phone, String email){
-        this.name = name;
+    Person (String phone, String email){
         this.phone = phone;
         this.email = email;
     }
 
-    int getPhone() {
+    String getPhone() {
         return phone;
     }
 
     String getEmail() {
         return email;
-    }
-
-    String getName() {
-        return name;
     }
 }
