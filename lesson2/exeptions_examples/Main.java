@@ -1,9 +1,11 @@
 package lesson2.exeptions_examples;
 
-public class Test {
+public class Main {
     public static void main(String[] args) {
-
-
+        /**
+         * В методе main необходимо вызвать полученные методы,
+         * обработать возможные исключения и вывести результат расчета.
+         */
         //String[][] newArray1 = {{"1", "2", "3", "4"},{"1", "2", "3", "4"},{"1", "2", "3", "4"},{"1", "2", "3", "4"}};
         //printArray(stringArrayToInt(newArray1));
         String newString1 = "10 3 1 2\n2 3 2 2\n5 6 7 1\n300 3 1 0";

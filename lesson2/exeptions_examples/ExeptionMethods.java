@@ -8,6 +8,12 @@ public class ExeptionMethods {
         }
     }
 
+    //TODO
+    /**
+     * Ваши методы должны бросить исключения в случаях:
+     * Если размер матрицы, полученной из строки, не равен 4x4;
+     * Если в одной из ячеек полученной матрицы не число; (например символ или слово)
+     */
     static class MyArrayDataException extends Exception{
         private int numberRow;
         private int numberCol;
@@ -23,6 +29,11 @@ public class ExeptionMethods {
         }
     }
 
+    //TODO
+    /**
+     * Написать метод, на вход которого подаётся строка вида: "10 3 1 2\n2 3 2 2\n5 6 7 1\n300 3 1 0",
+     * метод должен преобразовать строку в двумерный массив типа String[][];
+     */
     private static String[][] stringToArray(String inputString) throws MyArraySizeException {
         String[] splittedOnceArray = inputString.split("\n");
         if (splittedOnceArray.length != 4) {
@@ -38,7 +49,10 @@ public class ExeptionMethods {
         return splittedTwiceArray;
     }
 
-    //Метод может преобразовать массив типа String[][] любого размера в тип int[][]
+    //TODO
+    /**
+     * * преобразовать массив типа String[][] любого размера в тип int[][]
+     */
     private static int[][] stringArrayToInt(String[][] inputArray) throws NumberFormatException, NullPointerException, MyArrayDataException {
         int[][] changedArray = new int[inputArray.length][];
         for (int i = 0; i < inputArray.length; i++) {
@@ -54,6 +68,10 @@ public class ExeptionMethods {
         return changedArray;
     }
 
+    //TODO
+    /**
+     * Преобразовать все элементы массива в числа типа int, просуммировать, поделить полученную сумму на 2, и вернуть результат;
+     */
     public static int summarizeArray(String in) throws NumberFormatException, NullPointerException, MyArraySizeException, MyArrayDataException {
         int[][] inputArray = stringArrayToInt(stringToArray(in));
 
@@ -67,7 +85,9 @@ public class ExeptionMethods {
         return result / 2;
     }
 
-    //Это просто метод печати двумерного массива int, использовался для проверки работы кода
+    /**
+     * метод печати двумерного массива int, использовался для проверки работы кода
+     */
     private static void printArray(int[][] inputArray) throws NullPointerException {
         for (int[] ints : inputArray) {
             for (int anInt : ints) {
