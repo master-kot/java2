@@ -2,6 +2,7 @@ package lesson2.exeptions_examples;
 
 public class Main {
     public static void main(String[] args) {
+        //TODO
         /**
          * В методе main необходимо вызвать полученные методы,
          * обработать возможные исключения и вывести результат расчета.

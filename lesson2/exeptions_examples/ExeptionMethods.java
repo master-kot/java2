@@ -2,18 +2,21 @@ package lesson2.exeptions_examples;
 
 public class ExeptionMethods {
 
+    //TODO
+    /**
+     * Написать метод, на вход которого подаётся строка вида: "10 3 1 2\n2 3 2 2\n5 6 7 1\n300 3 1 0",
+     * метод должен преобразовать строку в двумерный массив типа String[][];
+     * Ваши методы должны бросить исключения в случаях:
+     * Если размер матрицы, полученной из строки, не равен 4x4;
+     * Если в одной из ячеек полученной матрицы не число; (например символ или слово)
+     */
+
     static class MyArraySizeException extends Exception{
         MyArraySizeException(String message){
             super(message);
         }
     }
 
-    //TODO
-    /**
-     * Ваши методы должны бросить исключения в случаях:
-     * Если размер матрицы, полученной из строки, не равен 4x4;
-     * Если в одной из ячеек полученной матрицы не число; (например символ или слово)
-     */
     static class MyArrayDataException extends Exception{
         private int numberRow;
         private int numberCol;
@@ -29,29 +32,29 @@ public class ExeptionMethods {
         }
     }
 
-    //TODO
+    private static final int MATRIX_ROWS = 4;
+    private static final int MATRIX_COLS = 4;
+
     /**
-     * Написать метод, на вход которого подаётся строка вида: "10 3 1 2\n2 3 2 2\n5 6 7 1\n300 3 1 0",
-     * метод должен преобразовать строку в двумерный массив типа String[][];
+     * Преобразование строки в двумерный массив типа String[][]
      */
     private static String[][] stringToArray(String inputString) throws MyArraySizeException {
-        String[] splittedOnceArray = inputString.split("\n");
-        if (splittedOnceArray.length != 4) {
-            throw new MyArraySizeException ("Incoming String is wrong, so output array doesn't contain 4 rows!");
+        String[] splittedArray = inputString.split("\n");
+        if (splittedArray.length != MATRIX_ROWS) {
+            throw new MyArraySizeException (String.format("Incoming String is wrong and does not contain %s rows!", MATRIX_ROWS));
         }
-        String[][] splittedTwiceArray = new String[splittedOnceArray.length][];
-        for (int i = 0; i < splittedOnceArray.length; i++) {
-            splittedTwiceArray[i] = splittedOnceArray[i].split(" ");
+        String[][] splittedTwiceArray = new String[splittedArray.length][];
+        for (int i = 0; i < splittedArray.length; i++) {
+            splittedTwiceArray[i] = splittedArray[i].split(" ");
             if (splittedTwiceArray[i].length != 4) {
-                throw new MyArraySizeException ("Incoming String is wrong, so output array doesn't contain 4 columns!");
+                throw new MyArraySizeException (String.format("Incoming String is wrong and does not contain %s columns!", MATRIX_COLS));
             }
         }
         return splittedTwiceArray;
     }
 
-    //TODO
     /**
-     * * преобразовать массив типа String[][] любого размера в тип int[][]
+     * Преобразование массива типа String[][] любого размера в тип int[][]
      */
     private static int[][] stringArrayToInt(String[][] inputArray) throws NumberFormatException, NullPointerException, MyArrayDataException {
         int[][] changedArray = new int[inputArray.length][];
@@ -70,7 +73,7 @@ public class ExeptionMethods {
 
     //TODO
     /**
-     * Преобразовать все элементы массива в числа типа int, просуммировать, поделить полученную сумму на 2, и вернуть результат;
+     * Преобразовать строки, просуммировать, поделить полученную сумму на 2 и вернуть результат;
      */
     public static int summarizeArray(String in) throws NumberFormatException, NullPointerException, MyArraySizeException, MyArrayDataException {
         int[][] inputArray = stringArrayToInt(stringToArray(in));
