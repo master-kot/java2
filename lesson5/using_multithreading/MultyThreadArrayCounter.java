@@ -24,7 +24,7 @@ public class MultyThreadArrayCounter {
     private static float[] firstHalfOfArray = new float[HALF];
     private static float[] secondHalfOfArray = new float[HALF];
 
-
+    //TODO
     public static String firstCountMethod () {
         float result = 0;
         Arrays.fill(initialArray, 1F);
@@ -39,6 +39,7 @@ public class MultyThreadArrayCounter {
         return "Time of one thread operation is: " + lastTime + ", result of operation is: " + result;
     }
 
+    //TODO
     public static String secondCountMethod () {
         float result = 0;
         Arrays.fill(initialArray, 1F);
