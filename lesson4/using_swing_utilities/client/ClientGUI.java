@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler {
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -93,6 +92,13 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         }
     }
 
+    //TODO
+    /**
+     * Создать окно для клиентской части чата: большое текстовое поле для отображения переписки в центре окна.
+     * Однострочное текстовое поле для ввода сообщений и кнопка для отсылки сообщений на нижней панели.
+     * Сообщение должно отсылаться либо по нажатию кнопки на форме, либо по нажатию кнопки Enter.
+     * При «отсылке» сообщение перекидывается из нижнего поля в центральное.
+     */
     private void sendMessage() {
         String msg = tfMessage.getText();
         String username = tfLogin.getText();
@@ -103,6 +109,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         wrtMsgToLogFile(msg, username);
     }
 
+    //TODO
     private void wrtMsgToLogFile(String msg, String username) {
         try (FileWriter out = new FileWriter("log.txt", true)) {
             out.write(username + ": " + msg + "\n");
@@ -115,6 +122,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         }
     }
 
+    //TODO
     private void putLog(String msg) {
         if ("".equals(msg)) return;
         SwingUtilities.invokeLater(new Runnable() {
