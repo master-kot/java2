@@ -8,40 +8,33 @@ public class MethodsForArrays {
 
     //TODO
     /**
-     * Создать массив с набором слов (20-30 слов, должны встречаться повторяющиеся):
+     * Задан массив с набором слов (20-30 слов, должны встречаться повторяющиеся):
      * Найти список слов, из которых состоит текст (дубликаты не считать);
-     * Посчитать сколько раз встречается каждое слово (использовать HashMap);
      */
-    private static void listFromArray(String[] inputString) {
-//Это позволяет нам получить запрашиваемый список неповторяющихся членов массива
-//Не использую LinkedHashSet потому что в условиях не стояло упорядочить список
-        HashSet<String> listArrayParts = new HashSet<>(Arrays.asList(inputString));
-
-        System.out.println("The list of array's part: " + listArrayParts);
+    public static HashSet<String> transformArrayToSet (String[] inputArray) {
+        return new HashSet<String>(Arrays.asList(inputArray));
     }
 
     //TODO
     /**
-     *
+     * Посчитать сколько раз встречается каждое слово (использовать HashMap);
      */
-    private static void countArrayParts (String[] inputString) {
-//почитал какие методы нам могут помочь выполнить задание и решил использовать встроенные
-        HashMap<String, Integer> mapArrayParts = new HashMap<>();
-        for (String s : inputString) {
-            if (mapArrayParts.containsKey(s)) {
-                int j = mapArrayParts.get(s);
-                mapArrayParts.replace(s, ++j);
+    public static HashMap<String, Integer> countArrayParts (String[] inputArray) {
+        HashMap<String, Integer> result = new HashMap<>();
+        for (String s : inputArray) {
+            if (result.containsKey(s)) {
+                result.replace(s, result.get(s) + 1);
             } else {
-                mapArrayParts.put(s, 1);
+                result.put(s, 1);
             }
         }
-        System.out.println("The list of array's part and number of their presence: " + mapArrayParts);
+        return result;
     }
 
 
     public static void main(String[] args) {
         String[] someArray = {"first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth", "first", "second", "third", "fourth", "fifth", "sixth", "first", "second", "third", "fourth", "first", "second"};
-        listFromArray(someArray);
-        countArrayParts(someArray);
+        System.out.println(MethodsForArrays.transformArrayToSet(someArray));
+        System.out.println(MethodsForArrays.countArrayParts(someArray));
     }
 }
